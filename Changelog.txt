@@ -1,0 +1,384 @@
+Credit for the LPTreePrompter goes to Guillaume
+https://de.mathworks.com/matlabcentral/answers/512221-function-overwrites-output-with-a-different-number#answer_421822
+Credit for LPcelldispForFits goes to Uday Pradhan
+https://de.mathworks.com/matlabcentral/answers/588658-calculating-and-printing-uncertainties-of-fits-after-the-normal-display-of-fit-parameters#answer_490582
+LazyPlot, and all other components of the Toolbox LazyPlot on matlab file exchange:
+https://de.mathworks.com/matlabcentral/fileexchange/75515-lazyplot
+created by Claudius Appel.
+https://de.mathworks.com/matlabcentral/profile/authors/16470428-claudius-simon-appel
+
+______________________________________________________________________________________________________________________________
+Files of LazyPlot (always up to date to newest version)
+(This part is mostly here to be able to quickly open a function via CTRL + D
+
+LazyPlot
+    LPCodeComp (not part of LazyPlot itself, but shows how to use it)
+LPColorfun2
+LPCustommarkertypefun2
+LPErrorbarfun2
+LPFigurefun
+LPFinished
+LPFitfun2
+LPPlotfun2
+LPPlottypefun2
+LPTreePrompter
+LPSavefigfun
+LPFigurefun2
+LPfittypeindxtable.mat
+LPcelldispForFits
+______________________________________________________________________________________________________________________________
+Semi-important information:
+
+As this is now a toolbox, matlab automatically sets up all necessary paths.
+Files that have been altered in that release are displayed in square brackets without prefix behind the version.
+Files that are displayed with a minus symbol "-" before have been removed in this release, and LazyPlot is no 
+longer depending on them. Reason is normally given in patch notes.
+
+[major.minor.revision.build]
+
+From v.1.3-1.5:
+All changed files will be added seperately to the version subfolder on the google drive. 
+Exceptions might be made if too many files were altered, and it doesn't seem sensible to replace them by hand,
+instead of just downloading the entire new version.
+In addition, I'll provide a zip-folder containing all files if I feel like it.
+
+Files that will not be updated anymore going forward but kept in the folder are displayed with an division symbol "/".
+
+______________________________________________________________________________________________________________________________
+v.2.0.2.4 [23.04.2022] [LazyPlot]
+- added option to fix left bottom corner of graph to origin. Other corners not specifically supported. Please use the normal method of entering the axis range for doing so.
+______________________________________________________________________________________________________________________________
+v.2.0.2.3 [10.01.2021] [LPFitfun2,LazyPlot]
+- incorporated weights into the fits created by LPFitfun2. weights are currently calculated by as w=1/(LPmaterrory)^2. 
+______________________________________________________________________________________________________________________________
+v.2.0.2.2 [19.12.2020] [celldispForFits]
+- included LPcelldispForFits to print uncertainty of fit parameters in the fit display. Function courtesy of Uday Pradhan on 
+  the matlab answers forum.
+______________________________________________________________________________________________________________________________
+v.2.0.2.1 [09.12.2020] /
+- fixed small mistakes in function help section
+______________________________________________________________________________________________________________________________
+v.2.0.2.0 [07.12.2020] [LPSavefigfun,LPFigurefun2,-LPWhy]
+- 
+- reworked creation of legend entries to pull its data from the figure via get(gca...) instead of from the cell array. This 
+  also means that one can now just edit a specific legendentry without having to retype the others like before.
+- reworked the setting of legend position to be more compact, similar to how the setting of plottype is handled.
+- reworked size checks of matx/y/errorx/y to be more robust.
+- reworked creation of figure title and figure labels in LPFigurefun2
+- LPSavefigfun will now save the name under which structure and figure are saved as a field in the structure.
+- renamed gridsetting-button names slightly.
+- inserted a temporary method for displaying the fit parameter errors when running LazyPlot in normal mode. Might be replaced 
+  by a cleaner approach in the future. Attention: When fitting custom equations, the errors are displayed in order of the fit-
+  equation displayed. Since Matlab sorts the coefficients alphabetically when displaying a fit, the values don't line up any-
+  more. Therefore, cross-reference the fit equation to see which error belongs to which coefficient. This only applies to 
+  non-standard fit equations
+- moved the legend-creation block from the mainscript into LPFigurefun2
+- removed LPWhy, as it was silly, dumb, and redundant. 
+- reworked the LPFigurefun2 to make it possible to run it on its own to edit misspelled words in title/xlabel/ylabel or 
+  correct other settings
+______________________________________________________________________________________________________________________________
+v.2.0.1.1 Bugfixes [LPPlotfun2]
+- fixed creation of proper data points with and without errorbars if DatavData is chosen. Previously, Data points were created 
+  by default when choosing "Graph and Datapoints", which meant that they were plotted a second time if one then chooses to plot 
+  errorbars. Now fixed. Not a breaking bug, therefore not pushed as a seperate update.
+______________________________________________________________________________________________________________________________
+v.2.0.1.0 [14.08.2020] [LPWhy] 
+- actually fixed the purpose of this function by just integrating the functionality, without a call to the integrated function
+  "why". 
+______________________________________________________________________________________________________________________________
+ v.2.0.0.0 [13.08.2020] [LPFigurefun2,LPImpdatafun,LPColorfun2,LPCustomarkertypefun2,LPSavefigfun,LPFigurefun2,LPFitfun2,LazyPlot]
+[Version now set to 2.0.0.0 to give a baseline from which I can do it properly. Previously, numbers were admittetly increasing 
+however I thought at the moment. With each update, further updates are less likely because the need diminishes, as well as the 
+time to do so. So from now on I'll try sticking to SOME sort of convention.
+
+
+- added unified details at the start of every function and script for help [filename]
+- implemented preallocation of LPColors-matrix based on size of plotted matrices.
+- changed the code for the definition of the NumRows-variable
+- modified some disp-lines for clarity
+- changed the method of scaling the Previewfig for LPQS-mode to actually scale properly
+- reworked several questdlg-switch statements to remove unnecessary variables being used
+- rearranged colororder which was changed for some unknown to me reason from what I thought I started with originally.
+- simplified several size-determinations
+- reworked the LPSavefigfun from the toolbox itself to prevent errors.
+    - reworked mainfile to properly call the correct LPSavefigfunction
+- implemented QS-like functionality into Normal Procedure Route which enables QS-like predefined triggers so one can skip certain
+  questions to save time. Usually triggered with the support function LPImpDatfun. I am not sure if it will be part of the toolbox 
+  natively, or if it'll have to be downloaded seperately.
+- implemented break functionality in LPFigurefun2(when inputting axis limits only), LPFitfun2 (when inputting custom simple 
+  fittypes only)
+    - cf corresponding functions to see correspdonding keywords. 
+- changed the LPQS-variable to a logical type (can be called either true/1 or false/0) for simpler deactivation of LPQS-mode.
+    - only disadvantage is that one now has to actually define LPQS as either 1/true or 0/false, just defining it as something 
+      doesn't work anymore.
+- reworked LPFitfun2 to be more compact (long overdue, that was one of the oldest functions I haven't touched yet.)
+- fixed some minor inconsistencies in help text of LPFigurefun2
+- removed some superfluos lines in mainscript
+- changed a button label and switched some around to make layout more consistent
+- reworked LPCustommarkertypefun2 and LPColorfun2 to be shorter, removing redundant code
+- compactified several quest-&list-dialogues.
+- added LPImpDatafun, for imo simpler import of Data and additional flag setting. Normal functionality is preserved, this 
+  function is mostly a personal addition for my usecase (importing pre-processed data from google spreadsheets and plotting 
+  it.)
+- reworked method of creating legend
+- reworked some older code.
+- Presketch-limits of LPPlotfun2 were scaled down from 1000x limits to 50x limits, since the quality of the visual 
+  representation of the fit degrades the bigger the axes ranges are, if the window that LazyPlot scales back to is 
+  significantly smaller.
+    - Presketch-Factor is now defined within the main file, in the section "Creating dynamic axis ranges"
+
+______________________________________________________________________________________________________________________________
+v.1.5.3.2 [26.06.2020]
+- restructured main file a bit
+- included a preview plot of the data points before choosing the fittype
+- wip: creating additional fits with fixed origins
+    Use separate function LPInterceptfitfun to toggle between the normal models and the fixed@origin-models
+        cf Fixedatorigin_fit_betabranch
+- implemented the optional plotting of errorbars in case of DatavData- and scatter plots
+- switched the order of LPplotfun2 and LPErrorbarfun2 in order to remove a rather annoying bug
+- changed a small problem that resulted in the errorbar-questdlg being asked repeatedly when plotting a scatter plot
+- (hopefully) fixed LPSavefigfun
+    - if the function still throws up errors, deactivate it in the section "Save figures and LPData"
+- started writing a proper GettingStarted Guide
+______________________________________________________________________________________________________________________________
+v.1.5.3.1 Smaller fixes and additions  [LPSavefigfun] [14.06.2020]
+
+- fixed a few typos in comments
+- fixed faulty syntax in LPplotfun2 in case of non-line-plots 
+- removed a redundant disp-line in LPFitfun2 in case of choosing to use a custom fittype created with custom fit options
+- implemented errormessages for NaN-values in LPmatx and LPmaty, as they cannot contain those.
+- implemented a resetswitch for the plottype-dialog in normal mode.
+- implemented plotting of 2 data sets against each other, w/o overlaying fits as well. Choose "Data vs Data" as the plottype
+- implemented fallback for pressing esc/closing the window when choosing colors
+- implemented a new condition for the LPTreePrompter to be called even though a fittype-var already exists. Otherwise, if one 
+  wants to change the fittype, he would have to manually remove the fittypeindx from LPData.
+- implemented creation of cellarray AddFitInfo, which contains additional information about the fitted graphs, albeit less 
+  necessary. Mostly for sake of completion. However, for example it can tell you if the fit converged or not.
+- implemented safetychecks for transforming different matrices in case they end up incorrect for whatever reason. Should not 
+  actually ever trigger, but who knows.
+- implemented condition for the Close-figure-questdlg in Normal mode only to appear if there is actually a figure existing.
+- when an error-matrix is non-existant, it will no longer be substituted with zeros(...), but with nan(...).
+- restructured the Section checking for usable data matrices.
+- replaced the autocreation of zero-error-matrices with NaN-matrices, which now results in a cleaner plot
+    Previously, although the error was 0, an errorbar ws still being drawn at that position. This doesn't happen with NaN-matrices
+- added LPSavefigfun
+  - LPSavefigfun saves the Figure as a file named after the figures title. If the title is not set, the figure is not saved. In 
+    addition, it will save the LPData-structure which contains all relevant data in case one wants to rerun LazyPlot without having 
+    to create all data again.
+- axis defaults are now extrapolated from plotted data. Change the scaling-factors in section "Creating dynamic axis ranges" if you 
+  want a different factor. set either value of the [-1,1]-matrices to zero to disable scaling in that direction.
+______________________________________________________________________________________________________________________________
+v.1.5.3.0 [STRUCTURE UPDATE] Restructuring the whole thing to work via one structure [LPColorfun2,LPCustommarkertypefun2,LPErrorbarfun2,LPFigurefun2,LPFitfun2,LPPlotfun2,LPPlottypefun2] [31.05.2020]
+- in order to make calling functions simpler, all in-/outputs are converted into the structure "LPData", which contains all 
+  Data created during the call to LazyPlot.
+- it is still possible to define all data in matrices called LPmatx/y/errorx/errory, otherwise LazyPlot will not work.
+- slight alteration of the celldisp-commands for displaying their contents.
+- all new version files have the suffix "2" at the end of their respective function names, in order to differentiate 
+  the two instances, as they are completely incompatible with each other.
+______________________________________________________________________________________________________________________________
+v.1.5.2.1 Smaller fixes
+
+- changed the redefining LPQS-string to have the size 1x16, which is triggered when LPQS is defined. Necessary to prevent an 
+  error which could occure if LPQS is not a 1x16 character array
+- added a few lines explaining the "Lettuce review what we've learned"-line at the end of the call to LazyPlot.
+  For more information, look into the function "LPFinished". 
+  Function itself might be replaced later on by a normal disp()-line.
+- added comma2dot-conversion for the axis-definition in both LPFigurefun and LPQS-mode
+- changed the height-value of the listdlg-box for PolyX to accomodate for the extra space of "Back one level"
+______________________________________________________________________________________________________________________________
+v.1.5.2.0 [-LPDefinefun]
+- set certain menus into a while-loop to prevent the user from not making vital inputs or exiting via escape:
+    - when defining the Fittype (both normal and QS-mode)
+    - when defining the Plottype (only normal mode)
+    - when asked for wether or not to close all figures at the beginning (only normal mode)
+- added Errormessages and Fallback-defaults when User doesn't input properly:
+    - LPcolorfun
+    - LPCustommarkertypefun
+- implemented preallocation for the creation of the LPcolors-matrix in LPColorfun
+- modified several user inputs so they pop up again if they are just closed without the necessary user input.
+- modified the LPcolorfun and LPcustommarkertypefun to autopopulate the LPcolors and LPCustommarkertype -vectors 
+  according to the Number of graphs/rows you have in your matrices. The 350-line limit is therefore removed.
+- modified the "help LazyPlot"-command to display that all LPmatrices that need to be plotted have to be predefined by 
+  the user before calling Lazyplot.
+- rearranged the logic for the size checks and autopopulation of missing errormatrices in both modes.
+- removed LPDefinefun and therefore the possibility to define matrices directly via LazyPlot, as that method is very janky, 
+  prone to errors and generally not good. 
+  Replaced by custom error messages for different cases, depending on which matrix doesn't exist.
+  This also means that from now on you'll have to predefine all matrices needed to be used for plotting (LPmatx/y), 
+  and optionally also LPmaterrorx and LPmaterrory.
+- removed the logic behind the plotting of markers via LPplotfun instead of LPErrorbarfun, as that scenario will never happen,
+  since empty errormatrices are autopopulated according to the size of the LPmaty-matrix. Therefore, the condition for the 
+  plotting of the markers by the LPplotfun will never be true.
+
+
+- added Errormessages in case of nonexistant LPmatx- and LPmaty-matrices
+- added Errormessages in case of uneven number of columns in LPmatx/LPmaty and LPmaterrorx/LPmaterrory
+- added Errormessages in case of the input of characters(letters) into the Axis input field.
+- added Errormessages in case of wrong number of inputs into the axis input field or if inputs 1,3,5 are bigger than 2,4,7.
+- added Errormessage when trying to fit a custom fit model with fit options without it being defined properly beforehand.
+    - Note: custom fit options hasn't been tested extensively, and might/will be buggy at best. 
+- added Errormessages for various faulty inputs in the axis definition 
+______________________________________________________________________________________________________________________________
+v1.5.1.1 [15 May 2020]
+- Removed a rather annoying bug in the creation of the LPmatx-matrix in QS-mode resulting in that creation not being possible. 
+  Fixed by implementing some of the code from the non-QS section.
+______________________________________________________________________________________________________________________________
+v1.5.1.0 [15 May 2020]
+- LazyPlot now creates a cell array of size LPNumRows*1, similar to LPfits. It contains the goodness of fit-information for 
+  the plotted fits. Similar to the LPfits, they are only displayed in normal mode, but are still created in LPQS mode.
+______________________________________________________________________________________________________________________________
+v1.5.0.0/v1.5.0.1 [15 May 2020]
+The bucket of minimal tweaks and fixes patch that became bigger and bigger, and suddenly its the biggest one[/LPmanual,-LPFitlistfun,-LPDefinefun2.m,-LPCustomcolorfun.m,-LPSuiting2.m,-LPSuiting3.m,-LPPrecolfun.m,LazyPlot.m,LPCodeComp.m,LPColorfun.m,LPCustommarkertypefun.m,LPErrorbarfun.m,LPFigurefun.m,LPFitfun.m,LPPlotfun.m,LPPlottypefun.m]
+
+- added a new line that is for now deactivated. It will open the mathworks wiki page for 
+  greek letters and special symbols, because I cannot remember them myself.
+- added information on path setting to the changelog.txt-file.
+- added "help LazyPlot" functionality which displays how to enable the QS-mode. Although it might be smarter to set both up as
+  common
+- added the explanation for setpath from this file into the LPmanual-file as well
+- added of all function- and scriptnames into the Changelog-file for quicker access to those files
+- added a line to transpose the LPFits-vector before it is displayed. 
+- tweaked a line in the final information section displayed in the command window.
+  "LazyPlot v1.4 has finished running" to display which version is actually run, as it is not otherwise 
+  visible if the command "LazyPlot" actually runs the correct folder/version if multiple instances are installed.
+
+- changed two misspelled PromptStrings in LPplotfun that attributed a certain list of options the wrong name.
+- changed a display-line in LazyPlot to better display how to read/interpret the previously outputted LPFits{x}-objects.
+- changed the LPfittypeindxtable so that one can back out of selecting the Weibull-option if one accidentally clicks on it, by 
+  adding another leaf called Weibull and shifting the remaining structure one further down.
+- changed line 51 in LazyPlot, which was suppressed and therefore disabled the creation of a new figure if one
+  wanted that to happen. I have no idea when I disabled that.  
+- minor changes in various disp()-lines
+
+- removed the last few examples as they have no advantage from being this big. 
+  It just takes an unjustifiable large amount of time to run.
+- removed the decision tree for errorbars, it is replaced by a logical auto-check. 
+  If you have predefined variables for matx/y, but not materrorx/y, no errorbars will be plotted.
+  If you have predefined variables for matx/y and materrorx/y, errorbars will be plotted.
+  If you only want errorbars in one direction, do NOT define the other errormatrix 
+  Afterwards, call LazyPlot as usual.
+
+- renamed the "LazyPlot_Comparison_to_normal_code"-file to "LPCodeComp" to make it easier to call/open. 
+
+- Errorbars:
+    - added the possibility to only display one errorbar (either in x or y direction) by predefining
+      only one of them. 
+      If you have predefined variables for LPmatx/y/errorx, but not LPmaterrory, no Errorbar 
+      will be displayed in y-direction. Same thing vice versa.
+      If only LPmatx/y are defined, no errorbars are displayed at all.
+      If you only want errorbars in one direction, do NOT define the other errormatrix.
+      If you want an errorbar only on one of your data sets (e.g. only the first graph is supposed to 
+      have errorbars), or you want errorbars not on all data points of a graph, replace these slots in 
+      the corresponding errormatrices with "NaN"-values.
+      Works in both normal mode and LPQS mode.
+    - if you only want errorbars in one direction on one of your two/more graphs (i.e. the first graph has 
+      y-errorbar, but the others don't have them), create your LPmaterrory-matrix with NaN-value
+
+- renamed the following functions to capitalise the letter after the LP-abbreviation:
+    - LPErrorbarfun
+    - LPFitfun
+    - LPPlotfun
+    - LPPlottypefun
+    - LPFigurefun
+
+- added LPPrecolfun
+    - This function is necessary when calling the functions of LazyPlot by yourself without calling them all by calling 
+      the Script LazyPlot itself. It has to be called before calling LPplotfun and/or LPErrorbarfun.
+    - removed LPPrecolfun
+
+- added LPCustommarkertypefun
+    - This function makes it possible to assign custom markers to all plotted data sets, either by setting 
+      one style for all, or individually.
+    - on default or LPQS mode, it will cycle through the different possible markers in batches of 14, so that two 
+      lines with the same colour are distinguishable by markertype.
+      For more information on different possible marker styles, visit
+      https://de.mathworks.com/help/matlab/ref/plot.html#btzitot-Marker
+
+- added LPColorfun:
+    - replaces the LPCustomcolorfun-function. In addition, it has been adapted to work with the QS-mode.
+    - removed the "custom+"-feature. Since it cannot be done inside the function itself.
+        - instead, if one wants truly custom color triplets, he'll just have to define the "LPcolors"-vector 
+          himself before calling the function.
+    - LPCustomcolorfun was removed
+
+- LPFigurefun
+    - added a new line at position 55 in LPFigurefun to show when the function has finished running, in case 
+      it will be used independently
+    - changed the default selection for the button input for the figure grid to off
+    - switched the axis-range definition to the beginning of the inputs asked for in the function. 
+      Mostly preference, but also quicker because after the input, for quick&dirty plotting on the go, one can
+      now just spam the enter button if he only wants to see the graph quickly.
+    - switched the order of Locations for the legend, so that "best" is the first option. 
+      Everything else is moved one down in the list.
+    - added functionality to the last 3 options, as I apparently forgot to code them in.
+
+- Addendum to Figures: It is now possible to create the legend entries (names for data and curves) 
+  via LazyPlot. (Only in normal mode, not supported in QS-mode)
+  This is not part of the LPFigurefun-function due to the fact that I want to maintain LPFigurefun as 
+  a completely independent function that can be called outside of LazyPlot as well, as it is quite useful
+  to rework certain things.
+
+
+- implemented a Quick-Sketch-mode (QS)
+    QS-mode is enabled by defining "LPQS" before calling LazyPlot. It has to be enabled and disabled manually.
+    QS-mode is intended to quickly plot a figure, and therefore disables some features/functions:
+        QS-mode assumes that LPmatx/y, and, if necessary, LPmaterrorx/y are predefined before calling LazyPlot
+        Disabled:
+            - Vectordefinition (LPDefinefun)
+            - custom colours (LPColorfun)
+            - custom markertypes (LPCustommarkertypefun)
+            - Figure-title, axis names, custom legend location, legend Entries grid setting (LPFigurefun)
+            - celldisp{LPFits}
+            - LPFinished
+            - any and all disp()-messages in the command window, except for "LazyPlot has finished running."
+        Restricted:
+            - LPFigurefun:
+                - only axis ranges
+
+- Removed:
+    - LPCustomcolorfun
+    - LPDefinefun2
+    - LPSuiting2
+    - LPSuiting3
+    - LPFitlistfun, as it is redundant and bulky compared to the LPTreePrompter version.
+    - LPPrecolfun
+- small debug-disp()-line removed
+- sorted this changelog a bit
+- There are probably a few smaller things that I forgot about missing here
+- fixed a small but rather annoying bug with the LPQS-mode when the size of LPmatx=~LPmaty.
+______________________________________________________________________________________________________________________________
+Non-published build-logs below.
+______________________________________________________________________________________________________________________________
+v.1.4 [LPfittypeindxtable.mat] 
+
+- fixed a few mistakes with the LPfittypeindxtable.mat-file which would run into errors. When opening the 
+  variable LPfittypeindxtable, then sort by "IsLeaf" --> ascending. Some of the Nodes that are displayed 
+  as "Isleaf 0" should be "Isleaf 1". 
+  Either replace your file with the uploaded one or change the errors yourself.
+______________________________________________________________________________________________________________________________
+v.1.3 [LazyPlot.m]
+
+- added a line in LazyPlot.m that displays all fit parameters (cfit objects) in order in the command window, 
+  making it obsolete to open the LPFits-cell yourself and open each cfit-object on your own. This essentially
+  saves you (1+Number of plotted fitobjects)-clicks.
+- added some smaller explanation displays to certain choices.
+______________________________________________________________________________________________________________________________
+v.1.2 [LPCustomcolorfun.m,LazyPlot.m]
+
+- added LPCustomcolorfun.m
+    - This function makes it possible to attribute each pair of line and data point/errorbar one of the 14 
+      predefined colors (the 7 recent colors, as well as the 7 old colors, exept white.)
+      For more information on these colors, visit:
+      http://math.loyola.edu/~loberbro/matlab/html/colorsInMatlab.html
+    - It also makes it possible to define your own variable called "LPcolors" that contains all color triplets
+      for all objects to be plotted. This is not recommended for a large amount of objects. One color triplet 
+      is sufficient for both the line as well as the data point/errorbars.
+      Please create this vector before calling LazyPlot
+- small tweaks to all files to make changes from now on easier for me
+    - changed the block of commented text at the end of each file so that I don't have to change that in every 
+      file if I change/add something in code. From now on (v.1.2), the only valid text will only be in 
+      the "LazyPlot"-Main Script and in the added or changed files.
+      Number of code-lines will also only be updated in the Main Script.
+______________________________________________________________________________________________________________________________
+v.1.1 and previous builds:
+- no changelog written.

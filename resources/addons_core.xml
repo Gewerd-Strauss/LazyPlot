@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addonCore>
+  <label>LazyPlot</label>
+  <version>1.5.3.0</version>
+  <type>Toolbox</type>
+  <identifier>29dc39f2-d359-4ca1-9f2c-5a291e26a778</identifier>
+  <summary>LazyPlot is a toolbox for extensive plotting of data in 2D using any standard matlab fit model with minimal coding effort.</summary>
+  <description>LazyPlot can be used to both quickly display a figure containing any number of lines and data sets each.
+It will also define the axes ranges of the figure, as well as title, x/y-label, the position labels of the legend. Also, by defining the vector "LPQS" before calling "LazyPlot", one can get a glance at the figure by sacrificing some features. Clear out the variable again to enter normal mode again. 
+For more information on how to use LazyPlot, open the "LPCodeComp.m"-file. The changelog can have some information about how this came to be. I'd advise reading through the v.1.5 notes, it contains a few useful information on how to operate LazyPlot.
+LazyPlot can only plot if all matrices are of the same size. Use NaN to fill up missing data spots, or just call it a second time and plot into the same figure.
+The multiple commented matrices in the LPCodeComp-script show other methods for calling LazyPlot.
+The function LPFigurefun can be run separately as well, without having to call LazyPlot.
+
+
+Credit for the LPTreePrompter goes to Guillaume, https://de.mathworks.com/matlabcentral/answers/512221-function-overwrites-output-with-a-different-number#answer_421822</description>
+  <createdBy name="Claudius Simon Appel"/>
+  <image>resources/screenshot.png</image>
+</addonCore>
