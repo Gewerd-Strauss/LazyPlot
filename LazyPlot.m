@@ -127,7 +127,7 @@
 
 % ------------- BEGIN CODE --------------
 clc                                                                       % only clc in entire toolbox, so I won't miss any warnings.
-fprintf('LazyPlot version: %s.\n','2.0.2.5')                              % Mostly for keeping track of multiple instances for author
+fprintf('LazyPlot version: %s.\n','2.0.2.6')                              % Mostly for keeping track of multiple instances for author
 
 %% Load the LPfittypeindxtable.mat-file 
 warning('on')                                                             % mostly for myself to catch stuff I try that might be removed in the future

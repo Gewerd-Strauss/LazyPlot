@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addOn>
+  <identifier>dd01db86-8787-41e5-8148-4b15560272ab</identifier>
+  <displayType>Collection</displayType>
+  <translatedDisplayType>
+    <en_US>Collection</en_US>
+    <ja_JP>コレクション</ja_JP>
+    <ko_KR>컬렉션</ko_KR>
+    <zh_CN>集合</zh_CN>
+  </translatedDisplayType>
+  <name>LazyPlot</name>
+  <author>Claudius Simon Appel</author>
+  <version>2.0.2.5</version>
+  <downloadUrl>https://www.mathworks.com/matlabcentral/mlc-downloads/downloads/dd01db86-8787-41e5-8148-4b15560272ab/6f6e3450-71ff-47da-99f2-0a93bb07574b/packages/zip?src=addons_ml_desktop_install&amp;profile_id=16470428&amp;license=1103429&amp;release_family=R2021b</downloadUrl>
+  <licenseUrl>https://addons.mathworks.com/registry/v1/dd01db86-8787-41e5-8148-4b15560272ab/2.0.2.5/-/license</licenseUrl>
+  <previewImageUrl>https://www.mathworks.com/responsive_image/160/120/0/0/0/cache/matlabcentral/images/default_screenshot.jpg</previewImageUrl>
+  <releaseNotesUrl>https://www.mathworks.com/add-ons/dd01db86-8787-41e5-8148-4b15560272ab/6f6e3450-71ff-47da-99f2-0a93bb07574b/releaseNotes</releaseNotesUrl>
+  <installationFolder>Collections</installationFolder>
+</addOn>
